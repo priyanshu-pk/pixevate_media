@@ -16,8 +16,10 @@ export default function Home() {
   const [letterIndex, setLetterIndex] = useState(0);
   const [isQuoteAnimating, setIsQuoteAnimating] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   const quoteText = "Ready to elevate your brand?";
+  const mobileQuoteText = "Ready to elevate\nyour brand?";
   
   // Cursor blue hue effect (no shape, just glow)
   useEffect(() => {
@@ -209,9 +211,41 @@ export default function Home() {
         </ul>
         
         {/* Mobile menu button */}
-        <button className="md:hidden text-[#3388ff] text-2xl">
+        <button 
+          className="md:hidden text-[#3388ff] text-2xl"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
           ☰
         </button>
+        
+        {/* Mobile menu dropdown */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 right-0 bg-[#001a4a] border border-[#003cff]/20 shadow-[0_8px_32px_rgba(0,60,255,0.3)] z-50">
+            <div className="flex flex-col py-4">
+              {['Home', 'Services', 'About Us', 'Blog'].map((item) => (
+                <a
+                  key={item}
+                  className={`px-6 py-3 text-lg font-semibold transition-colors ${
+                    selected === item ? 'text-[#3388ff] bg-[#003cff]/10' : 'text-[#c9d6ff] hover:text-[#3388ff] hover:bg-[#003cff]/5'
+                  }`}
+                  onClick={() => {
+                    setSelected(item);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  href={
+                    item === 'Home' ? '#' :
+                    item === 'Services' ? '#whatwedo' :
+                    item === 'About Us' ? '#pixevatemedia' :
+                    item === 'Blog' ? '/blog' :
+                    `#${item.replace(/\s+/g, '').toLowerCase()}`
+                  }
+                >
+                  {item}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
       </nav>
       {/* Hero Section */}
       <main className="flex flex-col items-center justify-center flex-1 w-full mt-8 md:mt-20 font-primary px-4" style={{ background: 'transparent' }}>
@@ -285,96 +319,96 @@ export default function Home() {
           {/* First Row - Left to Right */}
           <div className="flex gap-8 md:gap-16 mb-4 md:mb-8 animate-scroll-left" style={{ animation: 'scrollLeft 25s linear infinite' }}>
             {/* First set of logos */}
-            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
-              <Image src="/rodbez.png" alt="RodBez" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '80px', width: '80px' }}>
+              <Image src="/rodbez.png" alt="RodBez" width={80} height={40} className="md:w-[200px] md:h-[100px]" style={{ width: 80, height: 40, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
-              <Image src="/timesnow.png" alt="Times Now Navbharat" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '80px', width: '80px' }}>
+              <Image src="/timesnow.png" alt="Times Now Navbharat" width={80} height={40} className="md:w-[200px] md:h-[100px]" style={{ width: 80, height: 40, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
-              <Image src="/heroearth.png" alt="Hero Earth" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '80px', width: '80px' }}>
+              <Image src="/heroearth.png" alt="Hero Earth" width={80} height={40} className="md:w-[200px] md:h-[100px]" style={{ width: 80, height: 40, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
-              <Image src="/mate.png" alt="Mate" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '80px', width: '80px' }}>
+              <Image src="/mate.png" alt="Mate" width={80} height={40} className="md:w-[200px] md:h-[100px]" style={{ width: 80, height: 40, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
-              <Image src="/mabeaute.png" alt="MA BEAUTE" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '80px', width: '80px' }}>
+              <Image src="/mabeaute.png" alt="MA BEAUTE" width={80} height={40} className="md:w-[200px] md:h-[100px]" style={{ width: 80, height: 40, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
-              <Image src="/myntra.png" alt="Myntra" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '80px', width: '80px' }}>
+              <Image src="/myntra.png" alt="Myntra" width={80} height={40} className="md:w-[200px] md:h-[100px]" style={{ width: 80, height: 40, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
-              <Image src="/upakarma.png" alt="UPAKARMA & ayurveda co." width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '80px', width: '80px' }}>
+              <Image src="/upakarma.png" alt="UPAKARMA & ayurveda co." width={80} height={40} className="md:w-[200px] md:h-[100px]" style={{ width: 80, height: 40, objectFit: 'contain' }} />
             </div>
             {/* Duplicate for seamless loop */}
-            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
-              <Image src="/rodbez.png" alt="RodBez" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '80px', width: '80px' }}>
+              <Image src="/rodbez.png" alt="RodBez" width={80} height={40} className="md:w-[200px] md:h-[100px]" style={{ width: 80, height: 40, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
-              <Image src="/timesnow.png" alt="Times Now Navbharat" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '80px', width: '80px' }}>
+              <Image src="/timesnow.png" alt="Times Now Navbharat" width={80} height={40} className="md:w-[200px] md:h-[100px]" style={{ width: 80, height: 40, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
-              <Image src="/heroearth.png" alt="Hero Earth" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '80px', width: '80px' }}>
+              <Image src="/heroearth.png" alt="Hero Earth" width={80} height={40} className="md:w-[200px] md:h-[100px]" style={{ width: 80, height: 40, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
-              <Image src="/mate.png" alt="Mate" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '80px', width: '80px' }}>
+              <Image src="/mate.png" alt="Mate" width={80} height={40} className="md:w-[200px] md:h-[100px]" style={{ width: 80, height: 40, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
-              <Image src="/mabeaute.png" alt="MA BEAUTE" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '80px', width: '80px' }}>
+              <Image src="/mabeaute.png" alt="MA BEAUTE" width={80} height={40} className="md:w-[200px] md:h-[100px]" style={{ width: 80, height: 40, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
-              <Image src="/myntra.png" alt="Myntra" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '80px', width: '80px' }}>
+              <Image src="/myntra.png" alt="Myntra" width={80} height={40} className="md:w-[200px] md:h-[100px]" style={{ width: 80, height: 40, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
-              <Image src="/upakarma.png" alt="UPAKARMA & ayurveda co." width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '80px', width: '80px' }}>
+              <Image src="/upakarma.png" alt="UPAKARMA & ayurveda co." width={80} height={40} className="md:w-[200px] md:h-[100px]" style={{ width: 80, height: 40, objectFit: 'contain' }} />
             </div>
           </div>
 
           {/* Second Row - Right to Left */}
           <div className="flex gap-8 md:gap-16 animate-scroll-right" style={{ animation: 'scrollRight 25s linear infinite' }}>
             {/* Second set of logos */}
-            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
-              <Image src="/naukri.png" alt="Naukri" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '80px', width: '80px' }}>
+              <Image src="/naukri.png" alt="Naukri" width={80} height={40} className="md:w-[200px] md:h-[100px]" style={{ width: 80, height: 40, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
-              <Image src="/sirona.png" alt="SIRONA" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '80px', width: '80px' }}>
+              <Image src="/sirona.png" alt="SIRONA" width={80} height={40} className="md:w-[200px] md:h-[100px]" style={{ width: 80, height: 40, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
-              <Image src="/meon.png" alt="ME-ON" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '80px', width: '80px' }}>
+              <Image src="/meon.png" alt="ME-ON" width={80} height={40} className="md:w-[200px] md:h-[100px]" style={{ width: 80, height: 40, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
-              <Image src="/coinswitch.png" alt="CoinSwitch" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '80px', width: '80px' }}>
+              <Image src="/coinswitch.png" alt="CoinSwitch" width={80} height={40} className="md:w-[200px] md:h-[100px]" style={{ width: 80, height: 40, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
-              <Image src="/finnovate.png" alt="FINNOVATE" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '80px', width: '80px' }}>
+              <Image src="/finnovate.png" alt="FINNOVATE" width={80} height={40} className="md:w-[200px] md:h-[100px]" style={{ width: 80, height: 40, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
-              <Image src="/rodbez.png" alt="RodBez" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '80px', width: '80px' }}>
+              <Image src="/rodbez.png" alt="RodBez" width={80} height={40} className="md:w-[200px] md:h-[100px]" style={{ width: 80, height: 40, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
-              <Image src="/timesnow.png" alt="Times Now Navbharat" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '80px', width: '80px' }}>
+              <Image src="/timesnow.png" alt="Times Now Navbharat" width={80} height={40} className="md:w-[200px] md:h-[100px]" style={{ width: 80, height: 40, objectFit: 'contain' }} />
             </div>
             {/* Duplicate for seamless loop */}
-            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
-              <Image src="/naukri.png" alt="Naukri" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '80px', width: '80px' }}>
+              <Image src="/naukri.png" alt="Naukri" width={80} height={40} className="md:w-[200px] md:h-[100px]" style={{ width: 80, height: 40, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
-              <Image src="/sirona.png" alt="SIRONA" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '80px', width: '80px' }}>
+              <Image src="/sirona.png" alt="SIRONA" width={80} height={40} className="md:w-[200px] md:h-[100px]" style={{ width: 80, height: 40, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
-              <Image src="/meon.png" alt="ME-ON" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '80px', width: '80px' }}>
+              <Image src="/meon.png" alt="ME-ON" width={80} height={40} className="md:w-[200px] md:h-[100px]" style={{ width: 80, height: 40, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
-              <Image src="/coinswitch.png" alt="CoinSwitch" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '80px', width: '80px' }}>
+              <Image src="/coinswitch.png" alt="CoinSwitch" width={80} height={40} className="md:w-[200px] md:h-[100px]" style={{ width: 80, height: 40, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
-              <Image src="/finnovate.png" alt="FINNOVATE" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '80px', width: '80px' }}>
+              <Image src="/finnovate.png" alt="FINNOVATE" width={80} height={40} className="md:w-[200px] md:h-[100px]" style={{ width: 80, height: 40, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
-              <Image src="/rodbez.png" alt="RodBez" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '80px', width: '80px' }}>
+              <Image src="/rodbez.png" alt="RodBez" width={80} height={40} className="md:w-[200px] md:h-[100px]" style={{ width: 80, height: 40, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
-              <Image src="/timesnow.png" alt="Times Now Navbharat" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '80px', width: '80px' }}>
+              <Image src="/timesnow.png" alt="Times Now Navbharat" width={80} height={40} className="md:w-[200px] md:h-[100px]" style={{ width: 80, height: 40, objectFit: 'contain' }} />
             </div>
           </div>
         </div>
@@ -644,25 +678,25 @@ export default function Home() {
                 avatar: "🛍️"
               }
             ].map((testimonial, index) => (
-              <div key={index} className="w-72 md:w-80 h-80 md:h-96 border border-[#003cff]/20 shadow-[0_16px_48px_rgba(0,60,255,0.2),0_8px_24px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.1)] flex flex-col p-4 md:p-5 relative transform hover:scale-105 hover:shadow-[0_20px_60px_rgba(0,60,255,0.3),0_12px_36px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.15)] transition-all duration-300" style={{ borderRadius: 0, minWidth: '280px', background: `linear-gradient(135deg, #003cff22 0%, #8b5cf622 50%, #10b98122 100%)` }}>
+              <div key={index} className="w-56 md:w-80 h-64 md:h-96 border border-[#003cff]/20 shadow-[0_16px_48px_rgba(0,60,255,0.2),0_8px_24px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.1)] flex flex-col p-2 md:p-5 relative transform hover:scale-105 hover:shadow-[0_20px_60px_rgba(0,60,255,0.3),0_12px_36px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.15)] transition-all duration-300" style={{ borderRadius: 0, minWidth: '200px', background: `linear-gradient(135deg, #003cff22 0%, #8b5cf622 50%, #10b98122 100%)` }}>
                 {/* 3D depth effect with pseudo-element */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#003cff]/5 to-transparent" style={{ borderRadius: 0 }}></div>
                 
                 {/* Quote icon */}
-                <div className="text-xl mb-3 text-[#3388ff]">💬</div>
+                <div className="text-lg md:text-xl mb-2 md:mb-3 text-[#3388ff]">💬</div>
                 
                 {/* Review text */}
-                <p className="text-white text-sm leading-relaxed mb-2 flex-1 relative z-10">
+                <p className="text-white text-xs md:text-sm leading-relaxed mb-1 md:mb-2 flex-1 relative z-10">
                   &ldquo;{testimonial.review}&rdquo;
                 </p>
                 
                 {/* Client info */}
                 <div className="flex items-center justify-between relative z-10">
                   <div className="flex-1">
-                    <div className="text-white font-semibold text-sm">{testimonial.name}</div>
+                    <div className="text-white font-semibold text-xs md:text-sm">{testimonial.name}</div>
                     <div className="text-[#b3c6ff] text-xs">{testimonial.role}</div>
                   </div>
-                  <div className="w-10 h-10 bg-[#003cff] flex items-center justify-center text-lg shadow-[0_6px_16px_rgba(0,60,255,0.4),inset_0_1px_0_rgba(255,255,255,0.2)]" style={{ borderRadius: 0 }}>
+                  <div className="w-8 h-8 md:w-10 md:h-10 bg-[#003cff] flex items-center justify-center text-sm md:text-lg shadow-[0_6px_16px_rgba(0,60,255,0.4),inset_0_1px_0_rgba(255,255,255,0.2)]" style={{ borderRadius: 0 }}>
                     {testimonial.avatar}
                   </div>
                 </div>
@@ -706,23 +740,47 @@ export default function Home() {
           {/* Letter-by-letter animated quote */}
           <h2 className="text-3xl md:text-5xl lg:text-7xl font-extrabold mb-6 md:mb-8" style={{ color: 'var(--text)' }}>
             <div className="flex flex-wrap justify-center items-center">
-              {quoteText.split('').map((letter, index) => (
-                <span
-                  key={index}
-                  className={`transition-all duration-500 ${
-                    index <= letterIndex
-                      ? 'opacity-100 transform translate-y-0'
-                      : 'opacity-0 transform translate-y-8'
-                  }`}
-                  style={{
-                    transitionDelay: `${index * 50}ms`,
-                    color: letter === ' ' ? 'transparent' : 'inherit',
-                    marginRight: letter === ' ' ? '1.5rem' : '0.1rem'
-                  }}
-                >
-                  {letter}
-                </span>
-              ))}
+              {/* Mobile version with line break */}
+              <div className="md:hidden">
+                {mobileQuoteText.split('').map((letter, index) => (
+                  <span
+                    key={index}
+                    className={`transition-all duration-500 ${
+                      index <= letterIndex
+                        ? 'opacity-100 transform translate-y-0'
+                        : 'opacity-0 transform translate-y-8'
+                    }`}
+                    style={{
+                      transitionDelay: `${index * 50}ms`,
+                      color: letter === ' ' || letter === '\n' ? 'transparent' : 'inherit',
+                      marginRight: letter === ' ' ? '1.5rem' : letter === '\n' ? '0' : '0.1rem',
+                      display: letter === '\n' ? 'block' : 'inline'
+                    }}
+                  >
+                    {letter === '\n' ? <br /> : letter}
+                  </span>
+                ))}
+              </div>
+              {/* Desktop version without line break */}
+              <div className="hidden md:flex flex-wrap justify-center items-center">
+                {quoteText.split('').map((letter, index) => (
+                  <span
+                    key={index}
+                    className={`transition-all duration-500 ${
+                      index <= letterIndex
+                        ? 'opacity-100 transform translate-y-0'
+                        : 'opacity-0 transform translate-y-8'
+                    }`}
+                    style={{
+                      transitionDelay: `${index * 50}ms`,
+                      color: letter === ' ' ? 'transparent' : 'inherit',
+                      marginRight: letter === ' ' ? '1.5rem' : '0.1rem'
+                    }}
+                  >
+                    {letter}
+                  </span>
+                ))}
+              </div>
             </div>
           </h2>
           <p className="mt-6 md:mt-8 text-base md:text-lg lg:text-xl text-[#c9d6ff] max-w-4xl leading-relaxed">
