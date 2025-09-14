@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+/* Font imports */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --site-bg: #00031f;
+  --text: #ededed;
+  --accent-black: #000000;
+  --cutout: #000000;
+  --font-primary: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-secondary: "Times New Roman", Times, serif;
+}
+
+[data-theme='light'] {
+  --site-bg: #ffffff;
+  --text: #171717;
+  --accent-black: #000000;
+  --cutout: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--site-bg);
+  --color-foreground: var(--text);
+  --font-sans: var(--font-primary);
+  --font-mono: var(--font-secondary);
+}
+
+body {
+  background: var(--site-bg);
+  color: var(--text);
+  font-family: var(--font-primary);
+  font-weight: 400;
+}
+
+.secondary-font {
+  font-family: var(--font-secondary);
+}
+
+.pixel-nav-selected {
+  background: #003cff !important;
+  color: #fff !important;
+  border-radius: 0 !important;
+}
+
+/* Font fallbacks for better cross-platform support */
+.font-primary {
+  font-family: var(--font-primary);
+}
+
+.font-secondary {
+  font-family: var(--font-secondary);
+}
+
+/* Testimonial scroll animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+/* Logo carousel animations */
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll-left {
+  animation: scrollLeft 25s linear infinite;
+}
+
+.animate-scroll-right {
+  animation: scrollRight 25s linear infinite;
+}
