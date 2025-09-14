@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function BlogFallback() {
   return (
@@ -12,16 +13,16 @@ export default function BlogFallback() {
         </div>
         <ul className="flex gap-10 text-lg font-medium px-8 py-2 shadow-[0_8px_32px_0_rgba(0,60,255,0.15)]" style={{ borderRadius: 0, background: 'color-mix(in oklab, var(--site-bg) 80%, #0b1a5e)' }}>
           <li className="relative group">
-            <a className="px-4 py-1 transition-colors font-semibold text-[#3388ff]" style={{ borderRadius: 0 }} href="/">Home</a>
+            <Link className="px-4 py-1 transition-colors font-semibold text-[#3388ff]" style={{ borderRadius: 0 }} href="/">Home</Link>
           </li>
           <li className="relative group">
-            <a className="px-4 py-1 transition-colors font-semibold text-[#3388ff]" style={{ borderRadius: 0 }} href="/#whatwedo">Services</a>
+            <Link className="px-4 py-1 transition-colors font-semibold text-[#3388ff]" style={{ borderRadius: 0 }} href="/#whatwedo">Services</Link>
           </li>
           <li className="relative group">
-            <a className="px-4 py-1 transition-colors font-semibold text-[#3388ff]" style={{ borderRadius: 0 }} href="/#pixevatemedia">About Us</a>
+            <Link className="px-4 py-1 transition-colors font-semibold text-[#3388ff]" style={{ borderRadius: 0 }} href="/#pixevatemedia">About Us</Link>
           </li>
           <li className="relative group">
-            <a className="px-4 py-1 transition-colors font-semibold pixel-nav-selected" style={{ borderRadius: 0 }} href="/blog">Blog</a>
+            <Link className="px-4 py-1 transition-colors font-semibold pixel-nav-selected" style={{ borderRadius: 0 }} href="/blog">Blog</Link>
           </li>
         </ul>
         <div style={{ width: 40, height: 40 }} />

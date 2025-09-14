@@ -84,7 +84,7 @@ export default function BookCallModal({ isOpen, onClose }: BookCallModalProps) {
         {/* Header */}
         <div className="p-5 border-b border-[#003cff]/20">
           <h2 className="text-xl font-bold text-white mb-1">Book a Discovery Call</h2>
-          <p className="text-[#8bb6ff] text-xs">Let's discuss how we can elevate your brand</p>
+          <p className="text-[#8bb6ff] text-xs">Let&apos;s discuss how we can elevate your brand</p>
         </div>
 
         {/* Form */}
@@ -142,7 +142,7 @@ export default function BookCallModal({ isOpen, onClose }: BookCallModalProps) {
           </div>
 
           <div>
-            <label className="block text-white text-xs font-medium mb-1">What's your main goal? *</label>
+            <label className="block text-white text-xs font-medium mb-1">What&apos;s your main goal? *</label>
             <select
               name="goal"
               value={formData.goal}
@@ -183,7 +183,7 @@ export default function BookCallModal({ isOpen, onClose }: BookCallModalProps) {
 
           {isSubmitted && (
             <p className="text-[#10b981] text-xs text-center">
-              Thank you! We'll get back to you soon.
+              Thank you! We&apos;ll get back to you soon.
             </p>
           )}
         </form>

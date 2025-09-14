@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function BlogPage() {
   return (
@@ -12,16 +13,16 @@ export default function BlogPage() {
         </div>
         <ul className="flex gap-10 text-lg font-medium px-8 py-2 shadow-[0_8px_32px_0_rgba(0,60,255,0.15)]" style={{ borderRadius: 0, background: 'color-mix(in oklab, var(--site-bg) 80%, #0b1a5e)' }}>
           <li className="relative group">
-            <a className="px-4 py-1 transition-colors font-semibold text-[#3388ff]" style={{ borderRadius: 0 }} href="/">Home</a>
+            <Link className="px-4 py-1 transition-colors font-semibold text-[#3388ff]" style={{ borderRadius: 0 }} href="/">Home</Link>
           </li>
           <li className="relative group">
-            <a className="px-4 py-1 transition-colors font-semibold text-[#3388ff]" style={{ borderRadius: 0 }} href="/#whatwedo">Services</a>
+            <Link className="px-4 py-1 transition-colors font-semibold text-[#3388ff]" style={{ borderRadius: 0 }} href="/#whatwedo">Services</Link>
           </li>
           <li className="relative group">
-            <a className="px-4 py-1 transition-colors font-semibold text-[#3388ff]" style={{ borderRadius: 0 }} href="/#pixevatemedia">About Us</a>
+            <Link className="px-4 py-1 transition-colors font-semibold text-[#3388ff]" style={{ borderRadius: 0 }} href="/#pixevatemedia">About Us</Link>
           </li>
           <li className="relative group">
-            <a className="px-4 py-1 transition-colors font-semibold pixel-nav-selected" style={{ borderRadius: 0 }} href="/blog">Blog</a>
+            <Link className="px-4 py-1 transition-colors font-semibold pixel-nav-selected" style={{ borderRadius: 0 }} href="/blog">Blog</Link>
           </li>
         </ul>
         <div style={{ width: 40, height: 40 }} />
@@ -49,13 +50,13 @@ export default function BlogPage() {
 
           <article className="prose prose-invert max-w-none">
             <p className="text-[#c9d6ff] text-lg leading-relaxed">
-              In today's market, speed and strategy define success. Businesses don't just need design; they need clarity, precision, and impact, delivered faster than ever.
+              In today&apos;s market, speed and strategy define success. Businesses don&apos;t just need design; they need clarity, precision, and impact, delivered faster than ever.
             </p>
             <p className="text-[#c9d6ff] text-lg leading-relaxed mt-4">
-              At Pixevate.Media, we've been studying the shift: attention spans are shrinking, competition is multiplying, and AI is reshaping the way brands connect with their audience. The brands that adapt quickly are the ones that dominate, because in this new era, being good isn't enough; you have to be unforgettable.
+              At Pixevate.Media, we&apos;ve been studying the shift: attention spans are shrinking, competition is multiplying, and AI is reshaping the way brands connect with their audience. The brands that adapt quickly are the ones that dominate, because in this new era, being good isn&apos;t enough; you have to be unforgettable.
             </p>
 
-            <h2 className="text-2xl md:text-3xl font-bold text-white mt-10 mb-4">Here's what we've learned from the latest trends:</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mt-10 mb-4">Here&apos;s what we&apos;ve learned from the latest trends:</h2>
 
             <ul className="space-y-4">
               <li className="bg-[#001a4a] border border-[#003cff]/20 p-4" style={{ borderRadius: 0 }}>
@@ -64,7 +65,7 @@ export default function BlogPage() {
               </li>
               <li className="bg-[#001a4a] border border-[#003cff]/20 p-4" style={{ borderRadius: 0 }}>
                 <span className="text-white font-semibold">Design for attention:</span>{' '}
-                <span className="text-[#c9d6ff]">Scroll-stopping visuals and strategic storytelling aren't optional anymore; they're your first impression.</span>
+                <span className="text-[#c9d6ff]">Scroll-stopping visuals and strategic storytelling aren&apos;t optional anymore; they&apos;re your first impression.</span>
               </li>
               <li className="bg-[#001a4a] border border-[#003cff]/20 p-4" style={{ borderRadius: 0 }}>
                 <span className="text-white font-semibold">Faster to market:</span>{' '}
@@ -77,7 +78,7 @@ export default function BlogPage() {
             </ul>
 
             <p className="text-[#c9d6ff] text-lg leading-relaxed mt-8">
-              Whether you're a founder looking to launch or an established business aiming to scale, you don't need more time or more money — you need smarter moves. At Pixevate.Media, that's what we do: turn pixels into power moves, building brands that investors listen to and customers remember.
+              Whether you&apos;re a founder looking to launch or an established business aiming to scale, you don&apos;t need more time or more money — you need smarter moves. At Pixevate.Media, that&apos;s what we do: turn pixels into power moves, building brands that investors listen to and customers remember.
             </p>
           </article>
 
@@ -123,7 +124,7 @@ export default function BlogPage() {
                   <p className="text-[#c9d6ff] text-sm">{post.desc}</p>
                 </div>
                 <div className="mt-6">
-                  <a href={`/blog/${post.slug}`} className="text-[#3388ff] font-semibold">Read more →</a>
+                  <Link href={`/blog/${post.slug}`} className="text-[#3388ff] font-semibold">Read more →</Link>
                 </div>
               </div>
             ))}

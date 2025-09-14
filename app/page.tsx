@@ -1,12 +1,12 @@
 'use client';
 import React, { useRef, useEffect, useState } from "react";
 import Image from 'next/image';
+import Link from 'next/link';
 import BookCallModal from './components/BookCallModal';
 
 export default function Home() {
   // For navbar selection
   const [selected, setSelected] = useState('Home');
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
   // For smooth scroll
   const trustedRef = useRef<HTMLDivElement>(null);
   // For animated counters
@@ -17,7 +17,6 @@ export default function Home() {
   // For letter-by-letter animation
   const [letterIndex, setLetterIndex] = useState(0);
   const [isQuoteAnimating, setIsQuoteAnimating] = useState(false);
-  const [waHovered, setWaHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   const quoteText = "Ready to elevate your brand?";
@@ -144,7 +143,7 @@ export default function Home() {
     if (statsSection) observer.observe(statsSection);
 
     return () => observer.disconnect();
-  }, [hasAnimated]);
+  }, [hasAnimated, animateCounters]);
 
   const animateCounters = () => {
     const duration = 2000; // 2 seconds
@@ -177,9 +176,6 @@ export default function Home() {
     }, stepDuration);
   };
 
-  const handleExplore = () => {
-    trustedRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
     <div className="min-h-screen w-full flex flex-col items-center justify-start relative font-primary overflow-x-hidden" style={{ background: 'var(--site-bg)' }}>
@@ -581,7 +577,7 @@ export default function Home() {
               Pixevate.Media is an AI-powered branding agency that helps visionary businesses craft smart strategies, iconic designs, and scroll-stopping campaigns.
             </p>
             <p className="text-lg text-[#c9d6ff]">
-              From brand identity systems to performance-driven visuals, we create brands that don't just look good—they grow stronger.
+              From brand identity systems to performance-driven visuals, we create brands that don&apos;t just look good—they grow stronger.
             </p>
           </div>
           {/* Right: Chess Image */}
@@ -729,7 +725,7 @@ export default function Home() {
             </div>
           </h2>
           <p className="mt-8 text-lg md:text-xl text-[#c9d6ff] max-w-4xl leading-relaxed">
-            Let's turn your pixels into powerful brands. <a className="text-[#c9d6ff] hover:text-[#3388ff] transition-colors" href="#">Book your free discovery call</a> and
+            Let&apos;s turn your pixels into powerful brands. <a className="text-[#c9d6ff] hover:text-[#3388ff] transition-colors" href="#">Book your free discovery call</a> and
             take the first step to build something extraordinary.
           </p>
           <button 
@@ -762,7 +758,7 @@ export default function Home() {
                 <a className="text-white hover:text-[#3388ff] transition-colors duration-300 font-medium" href="#">Home</a>
                 <a className="text-[#c9d6ff] hover:text-[#3388ff] transition-colors duration-300 font-medium" href="#whatwedo">Services</a>
                 <a className="text-[#c9d6ff] hover:text-[#3388ff] transition-colors duration-300 font-medium" href="#pixevatemedia">About Us</a>
-                <a className="text-[#c9d6ff] hover:text-[#3388ff] transition-colors duration-300 font-medium" href="/blog">Blog</a>
+                <Link className="text-[#c9d6ff] hover:text-[#3388ff] transition-colors duration-300 font-medium" href="/blog">Blog</Link>
               </div>
               <div className="space-y-4">
                 <div className="text-xl font-bold text-white mb-3">About Us</div>
