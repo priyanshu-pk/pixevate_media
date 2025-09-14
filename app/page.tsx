@@ -126,23 +126,6 @@ export default function Home() {
     };
   }, []);
 
-  // Animated counters effect
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          setHasAnimated(true);
-          animateCounters();
-        }
-      });
-    }, { threshold: 0.5 });
-
-    const statsSection = document.getElementById('stats-section');
-    if (statsSection) observer.observe(statsSection);
-
-    return () => observer.disconnect();
-  }, [hasAnimated, animateCounters]);
-
   const animateCounters = useCallback(() => {
     const duration = 2000; // 2 seconds
     const steps = 60;
@@ -173,6 +156,23 @@ export default function Home() {
       }
     }, stepDuration);
   }, []);
+
+  // Animated counters effect
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+          animateCounters();
+        }
+      });
+    }, { threshold: 0.5 });
+
+    const statsSection = document.getElementById('stats-section');
+    if (statsSection) observer.observe(statsSection);
+
+    return () => observer.disconnect();
+  }, [hasAnimated, animateCounters]);
 
 
   return (
