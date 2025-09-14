@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useCallback } from "react";
 import Image from 'next/image';
 import Link from 'next/link';
 import BookCallModal from './components/BookCallModal';
@@ -7,8 +7,6 @@ import BookCallModal from './components/BookCallModal';
 export default function Home() {
   // For navbar selection
   const [selected, setSelected] = useState('Home');
-  // For smooth scroll
-  const trustedRef = useRef<HTMLDivElement>(null);
   // For animated counters
   const [counts, setCounts] = useState({ projects: 0, clients: 0, experience: 0 });
   const [hasAnimated, setHasAnimated] = useState(false);
@@ -145,7 +143,7 @@ export default function Home() {
     return () => observer.disconnect();
   }, [hasAnimated, animateCounters]);
 
-  const animateCounters = () => {
+  const animateCounters = useCallback(() => {
     const duration = 2000; // 2 seconds
     const steps = 60;
     const stepDuration = duration / steps;
@@ -174,7 +172,7 @@ export default function Home() {
         }, 5000);
       }
     }, stepDuration);
-  };
+  }, []);
 
 
   return (
@@ -652,7 +650,7 @@ export default function Home() {
                 
                 {/* Review text */}
                 <p className="text-white text-sm leading-relaxed mb-2 flex-1 relative z-10">
-                  "{testimonial.review}"
+                  &ldquo;{testimonial.review}&rdquo;
                 </p>
                 
                 {/* Client info */}
