@@ -180,14 +180,14 @@ export default function Home() {
       {/* Blue hue only on the left lower side, behind hero */}
       <div className="absolute left-[-15vw] top-[45vh] w-[50vw] h-[70vh] bg-[#3388ff44] rounded-full blur-[120px] pointer-events-none" style={{ zIndex: 0 }} />
       {/* Navbar */}
-      <nav className="w-full flex items-center justify-between px-12 pt-8 relative font-primary" style={{ background: 'var(--site-bg)' }}>
+      <nav className="w-full flex items-center justify-between px-4 md:px-12 pt-4 md:pt-8 relative font-primary" style={{ background: 'var(--site-bg)' }}>
         {/* Logo on the left */}
         <div className="flex items-center">
-          <Image src="/logo.png.png" alt="Logo" width={64} height={64} style={{ width: 64, height: 64 }} />
+          <Image src="/logo.png.png" alt="Logo" width={48} height={48} className="md:w-16 md:h-16" style={{ width: 48, height: 48 }} />
         </div>
         
-        {/* Center navigation (absolutely centered) */}
-        <ul className="flex gap-10 text-lg font-medium px-8 py-2 shadow-[0_8px_32px_0_rgba(0,60,255,0.15)] absolute left-1/2 -translate-x-1/2" style={{ borderRadius: 0, background: 'color-mix(in oklab, var(--site-bg) 80%, #0b1a5e)' }}>
+        {/* Center navigation (absolutely centered) - hidden on mobile, shown on desktop */}
+        <ul className="hidden md:flex gap-10 text-lg font-medium px-8 py-2 shadow-[0_8px_32px_0_rgba(0,60,255,0.15)] absolute left-1/2 -translate-x-1/2" style={{ borderRadius: 0, background: 'color-mix(in oklab, var(--site-bg) 80%, #0b1a5e)' }}>
           {['Home', 'Services', 'About Us', 'Blog'].map((item) => (
             <li key={item} className="relative group">
               <a
@@ -208,188 +208,191 @@ export default function Home() {
           ))}
         </ul>
         
-        {/* Right side kept empty for balance; theme toggle removed per request */}
+        {/* Mobile menu button */}
+        <button className="md:hidden text-[#3388ff] text-2xl">
+          ☰
+        </button>
       </nav>
       {/* Hero Section */}
-      <main className="flex flex-col items-center justify-center flex-1 w-full mt-20 font-primary" style={{ background: 'transparent' }}>
-        <div className="font-secondary italic text-3xl text-[#3388ff] mb-4 mt-8 text-center">
+      <main className="flex flex-col items-center justify-center flex-1 w-full mt-8 md:mt-20 font-primary px-4" style={{ background: 'transparent' }}>
+        <div className="font-secondary italic text-xl md:text-3xl text-[#3388ff] mb-4 mt-4 md:mt-8 text-center">
           Your Brand In Perfect Focus
         </div>
-        <h1 className={`text-6xl md:text-8xl font-extrabold text-center mb-8 bg-gradient-to-r from-[#003cff] to-[#8bb6ff] bg-clip-text text-transparent transition-all duration-1000 ${
+        <h1 className={`text-4xl md:text-6xl lg:text-8xl font-extrabold text-center mb-6 md:mb-8 bg-gradient-to-r from-[#003cff] to-[#8bb6ff] bg-clip-text text-transparent transition-all duration-1000 px-4 ${
           quoteVisible ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-4'
         }`}>
           One Pixel, At a time
         </h1>
-        <p className="text-base md:text-lg text-[#b3c6ff] text-center max-w-2xl mb-12">
-          We blend 60% human creativity with 40% AI, precision to design brands that<br />
-          cut through the noise and speak directly to your audience<br />
-          without wasting time, money, or attention.
+        <p className="text-sm md:text-base lg:text-lg text-[#b3c6ff] text-center max-w-2xl mb-8 md:mb-12 px-4">
+          We blend 60% human creativity with 40% AI, precision to design brands that<br className="hidden md:block" />
+          <span className="md:hidden"> </span>cut through the noise and speak directly to your audience<br className="hidden md:block" />
+          <span className="md:hidden"> </span>without wasting time, money, or attention.
         </p>
         <button
-          className="mt-2 mb-16 px-16 py-3 border-2 border-[#3388ff] text-[#3388ff] text-lg font-semibold bg-transparent hover:bg-[#3388ff] hover:text-white transition-all duration-200"
+          className="mt-2 mb-8 md:mb-16 px-8 md:px-16 py-2 md:py-3 border-2 border-[#3388ff] text-[#3388ff] text-base md:text-lg font-semibold bg-transparent hover:bg-[#3388ff] hover:text-white transition-all duration-200"
           style={{ borderRadius: 0 }}
           onClick={() => setIsModalOpen(true)}
         >
           Book a Call
         </button>
-        <div className="mt-2 text-2xl font-bold text-[#3388ff]" id="pixevatemedia">
+        <div className="mt-2 text-lg md:text-2xl font-bold text-[#3388ff]" id="pixevatemedia">
           Pixevate <span className="font-normal text-white">Media</span>
         </div>
       </main>
       {/* Statistics Section */}
-      <section id="stats-section" className="w-full flex justify-center items-center py-20 relative font-primary">
-        <div className="flex justify-between items-center w-full max-w-5xl px-8 gap-8">
+      <section id="stats-section" className="w-full flex justify-center items-center py-12 md:py-20 relative font-primary px-4">
+        <div className="flex flex-col md:flex-row justify-between items-center w-full max-w-5xl gap-4 md:gap-8">
           {/* Projects Completed */}
-          <div className="flex-1 flex flex-col items-center p-8 bg-gradient-to-br from-[#003cff]/10 to-[#00031f]/50 border border-[#003cff]/20 shadow-[0_8px_32px_rgba(0,60,255,0.1)] transition-all duration-300 hover:shadow-[0_12px_48px_rgba(0,60,255,0.2)]" style={{ borderRadius: 0 }}>
-            <div className="text-5xl md:text-6xl font-bold text-[#8bb6ff] mb-4 transition-all duration-500">
+          <div className="w-full md:flex-1 flex flex-col items-center p-4 md:p-8 bg-gradient-to-br from-[#003cff]/10 to-[#00031f]/50 border border-[#003cff]/20 shadow-[0_8px_32px_rgba(0,60,255,0.1)] transition-all duration-300 hover:shadow-[0_12px_48px_rgba(0,60,255,0.2)]" style={{ borderRadius: 0 }}>
+            <div className="text-3xl md:text-5xl lg:text-6xl font-bold text-[#8bb6ff] mb-2 md:mb-4 transition-all duration-500">
               {counts.projects}+
             </div>
-            <div className="text-lg font-semibold text-white mb-2">Projects</div>
-            <div className="text-sm text-[#c9d6ff] text-center">Completed</div>
+            <div className="text-base md:text-lg font-semibold text-white mb-1 md:mb-2">Projects</div>
+            <div className="text-xs md:text-sm text-[#c9d6ff] text-center">Completed</div>
           </div>
           
           {/* Happy Clients */}
-          <div className="flex-1 flex flex-col items-center p-8 bg-gradient-to-br from-[#003cff]/10 to-[#00031f]/50 border border-[#003cff]/20 shadow-[0_8px_32px_rgba(0,60,255,0.1)] transition-all duration-300 hover:shadow-[0_12px_48px_rgba(0,60,255,0.2)]" style={{ borderRadius: 0 }}>
-            <div className="text-5xl md:text-6xl font-bold text-[#8bb6ff] mb-4 transition-all duration-500">
+          <div className="w-full md:flex-1 flex flex-col items-center p-4 md:p-8 bg-gradient-to-br from-[#003cff]/10 to-[#00031f]/50 border border-[#003cff]/20 shadow-[0_8px_32px_rgba(0,60,255,0.1)] transition-all duration-300 hover:shadow-[0_12px_48px_rgba(0,60,255,0.2)]" style={{ borderRadius: 0 }}>
+            <div className="text-3xl md:text-5xl lg:text-6xl font-bold text-[#8bb6ff] mb-2 md:mb-4 transition-all duration-500">
               {counts.clients}+
             </div>
-            <div className="text-lg font-semibold text-white mb-2">Happy</div>
-            <div className="text-sm text-[#c9d6ff] text-center">Clients</div>
+            <div className="text-base md:text-lg font-semibold text-white mb-1 md:mb-2">Happy</div>
+            <div className="text-xs md:text-sm text-[#c9d6ff] text-center">Clients</div>
           </div>
           
           {/* Experience */}
-          <div className="flex-1 flex flex-col items-center p-8 bg-gradient-to-br from-[#003cff]/10 to-[#00031f]/50 border border-[#003cff]/20 shadow-[0_8px_32px_rgba(0,60,255,0.1)] transition-all duration-300 hover:shadow-[0_12px_48px_rgba(0,60,255,0.2)]" style={{ borderRadius: 0 }}>
-            <div className="text-5xl md:text-6xl font-bold text-[#8bb6ff] mb-4 transition-all duration-500">
+          <div className="w-full md:flex-1 flex flex-col items-center p-4 md:p-8 bg-gradient-to-br from-[#003cff]/10 to-[#00031f]/50 border border-[#003cff]/20 shadow-[0_8px_32px_rgba(0,60,255,0.1)] transition-all duration-300 hover:shadow-[0_12px_48px_rgba(0,60,255,0.2)]" style={{ borderRadius: 0 }}>
+            <div className="text-3xl md:text-5xl lg:text-6xl font-bold text-[#8bb6ff] mb-2 md:mb-4 transition-all duration-500">
               {counts.experience}
             </div>
-            <div className="text-lg font-semibold text-white mb-2">Years</div>
-            <div className="text-sm text-[#c9d6ff] text-center">Experience</div>
+            <div className="text-base md:text-lg font-semibold text-white mb-1 md:mb-2">Years</div>
+            <div className="text-xs md:text-sm text-[#c9d6ff] text-center">Experience</div>
           </div>
         </div>
       </section>
       {/* Trusted By Section */}
-      <section className="w-full flex flex-col items-center justify-center py-24 relative overflow-hidden font-primary" style={{ background: 'var(--site-bg)' }}>
+      <section className="w-full flex flex-col items-center justify-center py-12 md:py-24 relative overflow-hidden font-primary px-4" style={{ background: 'var(--site-bg)' }}>
         {/* Large background text */}
-        <span className="absolute left-0 top-0 w-full text-[7vw] font-extrabold text-[#003cff]/40 select-none pointer-events-none text-center" style={{ zIndex: 0, userSelect: 'none', opacity: 0.4 }}>
+        <span className="absolute left-0 top-0 w-full text-[12vw] md:text-[7vw] font-extrabold text-[#003cff]/40 select-none pointer-events-none text-center" style={{ zIndex: 0, userSelect: 'none', opacity: 0.4 }}>
           Trusted By
         </span>
-        <h2 className="text-5xl md:text-6xl italic font-extrabold text-center text-white mb-24 mt-8 relative z-10 font-secondary" style={{ fontStyle: 'italic', marginTop: '-2rem' }}>
+        <h2 className="text-3xl md:text-5xl lg:text-6xl italic font-extrabold text-center text-white mb-12 md:mb-24 mt-4 md:mt-8 relative z-10 font-secondary" style={{ fontStyle: 'italic', marginTop: '-1rem' }}>
           Trusted By
         </h2>
         
         {/* Logo Carousel Container */}
-        <div className="w-full relative z-10 py-8 px-4" style={{ background: 'white' }}>
+        <div className="w-full relative z-10 py-4 md:py-8 px-2 md:px-4" style={{ background: 'white' }}>
           {/* First Row - Left to Right */}
-          <div className="flex gap-16 mb-8 animate-scroll-left" style={{ animation: 'scrollLeft 25s linear infinite' }}>
+          <div className="flex gap-8 md:gap-16 mb-4 md:mb-8 animate-scroll-left" style={{ animation: 'scrollLeft 25s linear infinite' }}>
             {/* First set of logos */}
-            <div className="flex items-center justify-center" style={{ minWidth: '200px' }}>
-              <Image src="/rodbez.png" alt="RodBez" width={200} height={100} style={{ width: 200, height: 100, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
+              <Image src="/rodbez.png" alt="RodBez" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '200px' }}>
-              <Image src="/timesnow.png" alt="Times Now Navbharat" width={200} height={100} style={{ width: 200, height: 100, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
+              <Image src="/timesnow.png" alt="Times Now Navbharat" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '200px' }}>
-              <Image src="/heroearth.png" alt="Hero Earth" width={200} height={100} style={{ width: 200, height: 100, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
+              <Image src="/heroearth.png" alt="Hero Earth" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '200px' }}>
-              <Image src="/mate.png" alt="Mate" width={200} height={100} style={{ width: 200, height: 100, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
+              <Image src="/mate.png" alt="Mate" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '200px' }}>
-              <Image src="/mabeaute.png" alt="MA BEAUTE" width={200} height={100} style={{ width: 200, height: 100, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
+              <Image src="/mabeaute.png" alt="MA BEAUTE" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '200px' }}>
-              <Image src="/myntra.png" alt="Myntra" width={200} height={100} style={{ width: 200, height: 100, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
+              <Image src="/myntra.png" alt="Myntra" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '200px' }}>
-              <Image src="/upakarma.png" alt="UPAKARMA & ayurveda co." width={200} height={100} style={{ width: 200, height: 100, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
+              <Image src="/upakarma.png" alt="UPAKARMA & ayurveda co." width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
             </div>
             {/* Duplicate for seamless loop */}
-            <div className="flex items-center justify-center" style={{ minWidth: '200px' }}>
-              <Image src="/rodbez.png" alt="RodBez" width={200} height={100} style={{ width: 200, height: 100, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
+              <Image src="/rodbez.png" alt="RodBez" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '200px' }}>
-              <Image src="/timesnow.png" alt="Times Now Navbharat" width={200} height={100} style={{ width: 200, height: 100, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
+              <Image src="/timesnow.png" alt="Times Now Navbharat" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '200px' }}>
-              <Image src="/heroearth.png" alt="Hero Earth" width={200} height={100} style={{ width: 200, height: 100, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
+              <Image src="/heroearth.png" alt="Hero Earth" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '200px' }}>
-              <Image src="/mate.png" alt="Mate" width={200} height={100} style={{ width: 200, height: 100, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
+              <Image src="/mate.png" alt="Mate" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '200px' }}>
-              <Image src="/mabeaute.png" alt="MA BEAUTE" width={200} height={100} style={{ width: 200, height: 100, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
+              <Image src="/mabeaute.png" alt="MA BEAUTE" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '200px' }}>
-              <Image src="/myntra.png" alt="Myntra" width={200} height={100} style={{ width: 200, height: 100, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
+              <Image src="/myntra.png" alt="Myntra" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '200px' }}>
-              <Image src="/upakarma.png" alt="UPAKARMA & ayurveda co." width={200} height={100} style={{ width: 200, height: 100, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
+              <Image src="/upakarma.png" alt="UPAKARMA & ayurveda co." width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
             </div>
           </div>
 
           {/* Second Row - Right to Left */}
-          <div className="flex gap-16 animate-scroll-right" style={{ animation: 'scrollRight 25s linear infinite' }}>
+          <div className="flex gap-8 md:gap-16 animate-scroll-right" style={{ animation: 'scrollRight 25s linear infinite' }}>
             {/* Second set of logos */}
-            <div className="flex items-center justify-center" style={{ minWidth: '200px' }}>
-              <Image src="/naukri.png" alt="Naukri" width={200} height={100} style={{ width: 200, height: 100, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
+              <Image src="/naukri.png" alt="Naukri" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '200px' }}>
-              <Image src="/sirona.png" alt="SIRONA" width={200} height={100} style={{ width: 200, height: 100, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
+              <Image src="/sirona.png" alt="SIRONA" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '200px' }}>
-              <Image src="/meon.png" alt="ME-ON" width={200} height={100} style={{ width: 200, height: 100, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
+              <Image src="/meon.png" alt="ME-ON" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '200px' }}>
-              <Image src="/coinswitch.png" alt="CoinSwitch" width={200} height={100} style={{ width: 200, height: 100, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
+              <Image src="/coinswitch.png" alt="CoinSwitch" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '200px' }}>
-              <Image src="/finnovate.png" alt="FINNOVATE" width={200} height={100} style={{ width: 200, height: 100, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
+              <Image src="/finnovate.png" alt="FINNOVATE" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '200px' }}>
-              <Image src="/rodbez.png" alt="RodBez" width={200} height={100} style={{ width: 200, height: 100, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
+              <Image src="/rodbez.png" alt="RodBez" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '200px' }}>
-              <Image src="/timesnow.png" alt="Times Now Navbharat" width={200} height={100} style={{ width: 200, height: 100, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
+              <Image src="/timesnow.png" alt="Times Now Navbharat" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
             </div>
             {/* Duplicate for seamless loop */}
-            <div className="flex items-center justify-center" style={{ minWidth: '200px' }}>
-              <Image src="/naukri.png" alt="Naukri" width={200} height={100} style={{ width: 200, height: 100, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
+              <Image src="/naukri.png" alt="Naukri" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '200px' }}>
-              <Image src="/sirona.png" alt="SIRONA" width={200} height={100} style={{ width: 200, height: 100, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
+              <Image src="/sirona.png" alt="SIRONA" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '200px' }}>
-              <Image src="/meon.png" alt="ME-ON" width={200} height={100} style={{ width: 200, height: 100, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
+              <Image src="/meon.png" alt="ME-ON" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '200px' }}>
-              <Image src="/coinswitch.png" alt="CoinSwitch" width={200} height={100} style={{ width: 200, height: 100, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
+              <Image src="/coinswitch.png" alt="CoinSwitch" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '200px' }}>
-              <Image src="/finnovate.png" alt="FINNOVATE" width={200} height={100} style={{ width: 200, height: 100, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
+              <Image src="/finnovate.png" alt="FINNOVATE" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '200px' }}>
-              <Image src="/rodbez.png" alt="RodBez" width={200} height={100} style={{ width: 200, height: 100, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
+              <Image src="/rodbez.png" alt="RodBez" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
             </div>
-            <div className="flex items-center justify-center" style={{ minWidth: '200px' }}>
-              <Image src="/timesnow.png" alt="Times Now Navbharat" width={200} height={100} style={{ width: 200, height: 100, objectFit: 'contain' }} />
+            <div className="flex items-center justify-center" style={{ minWidth: '120px', width: '120px' }}>
+              <Image src="/timesnow.png" alt="Times Now Navbharat" width={120} height={60} className="md:w-[200px] md:h-[100px]" style={{ width: 120, height: 60, objectFit: 'contain' }} />
             </div>
           </div>
         </div>
       </section>
       {/* What We Do Section */}
-      <section className="w-full flex flex-col items-center justify-center py-24 relative overflow-hidden font-primary" style={{ background: 'var(--site-bg)' }} id="whatwedo">
+      <section className="w-full flex flex-col items-center justify-center py-12 md:py-24 relative overflow-hidden font-primary px-4" style={{ background: 'var(--site-bg)' }} id="whatwedo">
         {/* Large background text */}
-        <span className="absolute left-0 top-0 w-full text-[7vw] font-extrabold text-[#003cff]/40 select-none pointer-events-none text-center" style={{ zIndex: 0, userSelect: 'none', opacity: 0.4 }}>
+        <span className="absolute left-0 top-0 w-full text-[12vw] md:text-[7vw] font-extrabold text-[#003cff]/40 select-none pointer-events-none text-center" style={{ zIndex: 0, userSelect: 'none', opacity: 0.4 }}>
           What We Do
         </span>
-        <h2 className="text-5xl md:text-6xl italic font-extrabold text-center text-white mb-16 mt-8 relative z-10 font-secondary" style={{ fontStyle: 'italic', marginTop: '-2rem' }}>
+        <h2 className="text-3xl md:text-5xl lg:text-6xl italic font-extrabold text-center text-white mb-8 md:mb-16 mt-4 md:mt-8 relative z-10 font-secondary" style={{ fontStyle: 'italic', marginTop: '-1rem' }}>
           What We Do
         </h2>
         
         {/* Three-column services layout */}
-        <div className="flex flex-col md:flex-row gap-8 w-full max-w-7xl relative z-10 mb-16">
+        <div className="flex flex-col md:flex-row gap-6 md:gap-8 w-full max-w-7xl relative z-10 mb-8 md:mb-16">
           {/* Column 1: Brand Foundation */}
-          <div className="flex-1 bg-[#001a4a] border border-[#003cff]/20 p-8 shadow-[0_8px_32px_rgba(0,60,255,0.1)] hover:shadow-[0_12px_40px_rgba(0,60,255,0.2)] transition-all duration-300" style={{ borderRadius: 0 }}>
+          <div className="flex-1 bg-[#001a4a] border border-[#003cff]/20 p-6 md:p-8 shadow-[0_8px_32px_rgba(0,60,255,0.1)] hover:shadow-[0_12px_40px_rgba(0,60,255,0.2)] transition-all duration-300" style={{ borderRadius: 0 }}>
             {/* Icon */}
             <div className="w-16 h-16 bg-[#003cff] flex items-center justify-center mb-6 shadow-[0_4px_16px_rgba(0,60,255,0.3)]" style={{ borderRadius: 0 }}>
               <span className="text-2xl">🎯</span>
@@ -425,7 +428,7 @@ export default function Home() {
           </div>
 
           {/* Column 2: Visual Excellence */}
-          <div className="flex-1 bg-[#001a4a] border border-[#003cff]/20 p-8 shadow-[0_8px_32px_rgba(0,60,255,0.1)] hover:shadow-[0_12px_40px_rgba(0,60,255,0.2)] transition-all duration-300" style={{ borderRadius: 0 }}>
+          <div className="flex-1 bg-[#001a4a] border border-[#003cff]/20 p-6 md:p-8 shadow-[0_8px_32px_rgba(0,60,255,0.1)] hover:shadow-[0_12px_40px_rgba(0,60,255,0.2)] transition-all duration-300" style={{ borderRadius: 0 }}>
             {/* Icon */}
             <div className="w-16 h-16 bg-[#8b5cf6] flex items-center justify-center mb-6 shadow-[0_4px_16px_rgba(139,92,246,0.3)]" style={{ borderRadius: 0 }}>
               <span className="text-2xl">🎨</span>
@@ -453,7 +456,7 @@ export default function Home() {
           </div>
 
           {/* Column 3: Revenue Acceleration */}
-          <div className="flex-1 bg-[#001a4a] border border-[#003cff]/20 p-8 shadow-[0_8px_32px_rgba(0,60,255,0.1)] hover:shadow-[0_12px_40px_rgba(0,60,255,0.2)] transition-all duration-300" style={{ borderRadius: 0 }}>
+          <div className="flex-1 bg-[#001a4a] border border-[#003cff]/20 p-6 md:p-8 shadow-[0_8px_32px_rgba(0,60,255,0.1)] hover:shadow-[0_12px_40px_rgba(0,60,255,0.2)] transition-all duration-300" style={{ borderRadius: 0 }}>
             {/* Icon */}
             <div className="w-16 h-16 bg-[#059669] flex items-center justify-center mb-6 shadow-[0_4px_16px_rgba(5,150,105,0.3)]" style={{ borderRadius: 0 }}>
               <span className="text-2xl">📈</span>
@@ -490,31 +493,31 @@ export default function Home() {
         </div>
 
         {/* AI Integration Section */}
-        <div className="w-full max-w-6xl relative z-10">
+        <div className="w-full max-w-6xl relative z-10 px-4">
           {/* Top Banner */}
-          <div className="flex items-center justify-center mb-8">
-            <div className="bg-[#001a4a] border border-[#003cff] px-6 py-3 rounded-lg flex items-center gap-3 shadow-[0_4px_16px_rgba(0,60,255,0.2)]">
-              <span className="text-[#3388ff] text-lg">🧠</span>
-              <span className="text-[#3388ff] font-semibold text-sm uppercase tracking-wider">AI-Powered Innovation</span>
-              <span className="text-[#3388ff] text-lg">⚡</span>
+          <div className="flex items-center justify-center mb-6 md:mb-8">
+            <div className="bg-[#001a4a] border border-[#003cff] px-4 md:px-6 py-2 md:py-3 rounded-lg flex items-center gap-2 md:gap-3 shadow-[0_4px_16px_rgba(0,60,255,0.2)]">
+              <span className="text-[#3388ff] text-base md:text-lg">🧠</span>
+              <span className="text-[#3388ff] font-semibold text-xs md:text-sm uppercase tracking-wider">AI-Powered Innovation</span>
+              <span className="text-[#3388ff] text-base md:text-lg">⚡</span>
             </div>
           </div>
 
           {/* Main Title with Gradient */}
-          <div className="text-center mb-6">
-            <h3 className="text-5xl md:text-6xl font-bold mb-4">
+          <div className="text-center mb-4 md:mb-6">
+            <h3 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-4">
               <span className="text-[#3388ff]">AI</span>
               <span className="bg-gradient-to-r from-[#8b5cf6] to-[#10b981] bg-clip-text text-transparent"> INTEGRATION</span>
             </h3>
-            <p className="text-lg text-[#b3c6ff] max-w-3xl mx-auto">
+            <p className="text-sm md:text-lg text-[#b3c6ff] max-w-3xl mx-auto">
               Revolutionary artificial intelligence tools that supercharge your creative process and automate your workflow.
             </p>
           </div>
 
           {/* 2x2 Grid of AI Tools - now flex row: boxes left, image right */}
-          <div className="flex flex-col md:flex-row items-center justify-between gap-12 mt-12">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 mt-8 md:mt-12">
             {/* Left: Smaller feature boxes in a column */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 w-full md:w-2/3 max-w-xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 lg:gap-6 w-full md:w-2/3 max-w-xl">
               {/* Box 1: Brand-trained GPT */}
               <div className="bg-[#001a4a] border border-[#003cff]/20 p-4 shadow-[0_4px_16px_rgba(0,60,255,0.08)] hover:shadow-[0_8px_24px_rgba(0,60,255,0.15)] transition-all duration-300" style={{ borderRadius: 0, fontSize: '0.95rem' }}>
                 <div className="w-10 h-10 bg-[#003cff] flex items-center justify-center mb-3 shadow-[0_2px_8px_rgba(0,60,255,0.2)]" style={{ borderRadius: 0 }}>
@@ -549,54 +552,54 @@ export default function Home() {
               </div>
             </div>
             {/* Right: Greek man image from local storage, larger and shifted right */}
-            <div className="hidden md:flex flex-1 items-center justify-end pr-16">
-              <Image src="/greek man updated.png" alt="Greek Man" width={520} height={520} style={{ width: 520, height: 520, objectFit: 'contain' }} />
+            <div className="hidden md:flex flex-1 items-center justify-end pr-8 lg:pr-16">
+              <Image src="/greek man updated.png" alt="Greek Man" width={400} height={400} className="lg:w-[520px] lg:h-[520px]" style={{ width: 400, height: 400, objectFit: 'contain' }} />
             </div>
           </div>
         </div>
       </section>
       {/* What We Do Different Section */}
-      <section className="w-full flex flex-col items-center justify-center py-24 relative overflow-hidden font-primary" style={{ background: 'var(--site-bg)' }}>
+      <section className="w-full flex flex-col items-center justify-center py-12 md:py-24 relative overflow-hidden font-primary px-4" style={{ background: 'var(--site-bg)' }}>
         {/* Large background text */}
-        <span className="absolute left-0 top-0 w-full text-[7vw] font-extrabold text-[#003cff]/40 select-none pointer-events-none text-center" style={{ zIndex: 0, userSelect: 'none', opacity: 0.4 }}>
+        <span className="absolute left-0 top-0 w-full text-[12vw] md:text-[7vw] font-extrabold text-[#003cff]/40 select-none pointer-events-none text-center" style={{ zIndex: 0, userSelect: 'none', opacity: 0.4 }}>
           What We do Different?
         </span>
-        <h2 className="text-5xl md:text-6xl italic font-extrabold text-center text-white mb-12 mt-8 relative z-10 font-secondary" style={{ fontStyle: 'italic', marginTop: '-2rem' }}>
+        <h2 className="text-3xl md:text-5xl lg:text-6xl italic font-extrabold text-center text-white mb-8 md:mb-12 mt-4 md:mt-8 relative z-10 font-secondary" style={{ fontStyle: 'italic', marginTop: '-1rem' }}>
           What We Do Different?
         </h2>
         {/* Content area */}
-        <div className="flex flex-row justify-between items-center w-full max-w-6xl gap-12 relative z-10">
+        <div className="flex flex-col md:flex-row justify-between items-center w-full max-w-6xl gap-8 md:gap-12 relative z-10">
           {/* Left: Text */}
-          <div className="flex-1" style={{ color: 'var(--text)' }}>
-            <h3 className="text-4xl md:text-5xl font-bold mb-6">
+          <div className="flex-1 text-center md:text-left" style={{ color: 'var(--text)' }}>
+            <h3 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">
               Branding that makes <span className="font-secondary italic">investors listen</span> and <span className="font-secondary italic">customers stay</span>.
             </h3>
-            <p className="text-lg mb-4 text-[#c9d6ff]">
+            <p className="text-base md:text-lg mb-3 md:mb-4 text-[#c9d6ff]">
               Pixevate.Media is an AI-powered branding agency that helps visionary businesses craft smart strategies, iconic designs, and scroll-stopping campaigns.
             </p>
-            <p className="text-lg text-[#c9d6ff]">
+            <p className="text-base md:text-lg text-[#c9d6ff]">
               From brand identity systems to performance-driven visuals, we create brands that don&apos;t just look good—they grow stronger.
             </p>
           </div>
           {/* Right: Chess Image */}
           <div className="flex-shrink-0">
-            <Image src="/Chess.png" alt="Chess" width={360} height={360} style={{ width: 360, height: 360, objectFit: 'cover' }} />
+            <Image src="/Chess.png" alt="Chess" width={280} height={280} className="md:w-[360px] md:h-[360px]" style={{ width: 280, height: 280, objectFit: 'cover' }} />
           </div>
         </div>
       </section>
       {/* Testimonials Section */}
-      <section className="w-full flex flex-col items-center justify-center py-24 relative overflow-hidden font-primary" style={{ background: 'var(--site-bg)' }}>
+      <section className="w-full flex flex-col items-center justify-center py-12 md:py-24 relative overflow-hidden font-primary px-4" style={{ background: 'var(--site-bg)' }}>
         {/* Large background text */}
-        <span className="absolute left-0 top-0 w-full text-[7vw] font-extrabold text-[#003cff]/40 select-none pointer-events-none text-center" style={{ zIndex: 0, userSelect: 'none', opacity: 0.4 }}>
+        <span className="absolute left-0 top-0 w-full text-[12vw] md:text-[7vw] font-extrabold text-[#003cff]/40 select-none pointer-events-none text-center" style={{ zIndex: 0, userSelect: 'none', opacity: 0.4 }}>
           Testimonials
         </span>
         {/* Section heading */}
-        <h2 className="text-5xl md:text-6xl italic font-extrabold text-center text-white mb-12 mt-8 relative z-10 font-secondary" style={{ fontStyle: 'italic', marginTop: '-2rem' }}>
+        <h2 className="text-3xl md:text-5xl lg:text-6xl italic font-extrabold text-center text-white mb-8 md:mb-12 mt-4 md:mt-8 relative z-10 font-secondary" style={{ fontStyle: 'italic', marginTop: '-1rem' }}>
           Testimonials
         </h2>
         {/* Modern testimonial cards with continuous scroll */}
         <div className="w-full overflow-hidden relative">
-          <div className="flex gap-12 animate-scroll" style={{ animation: 'scroll 30s linear infinite' }}>
+          <div className="flex gap-6 md:gap-12 animate-scroll" style={{ animation: 'scroll 30s linear infinite' }}>
             {[
               {
                 review: "When I was launching my personal brand through YouTube and the Awakening Code podcast, Pixevate.Media brought structure and vision. They didn’t just design thumbnails or visuals — they built an identity that truly reflected my voice. It felt like I had a partner who understood my journey, not just an agency.",
@@ -641,7 +644,7 @@ export default function Home() {
                 avatar: "🛍️"
               }
             ].map((testimonial, index) => (
-              <div key={index} className="w-80 h-96 border border-[#003cff]/20 shadow-[0_16px_48px_rgba(0,60,255,0.2),0_8px_24px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.1)] flex flex-col p-5 relative transform hover:scale-105 hover:shadow-[0_20px_60px_rgba(0,60,255,0.3),0_12px_36px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.15)] transition-all duration-300" style={{ borderRadius: 0, minWidth: '320px', background: `linear-gradient(135deg, #003cff22 0%, #8b5cf622 50%, #10b98122 100%)` }}>
+              <div key={index} className="w-72 md:w-80 h-80 md:h-96 border border-[#003cff]/20 shadow-[0_16px_48px_rgba(0,60,255,0.2),0_8px_24px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.1)] flex flex-col p-4 md:p-5 relative transform hover:scale-105 hover:shadow-[0_20px_60px_rgba(0,60,255,0.3),0_12px_36px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.15)] transition-all duration-300" style={{ borderRadius: 0, minWidth: '280px', background: `linear-gradient(135deg, #003cff22 0%, #8b5cf622 50%, #10b98122 100%)` }}>
                 {/* 3D depth effect with pseudo-element */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#003cff]/5 to-transparent" style={{ borderRadius: 0 }}></div>
                 
@@ -669,39 +672,39 @@ export default function Home() {
         </div>
       </section>
       {/* Our Philosophy Section */}
-      <section className="w-full flex flex-col items-center justify-center py-24 relative overflow-hidden font-primary" style={{ background: 'var(--site-bg)' }}>
+      <section className="w-full flex flex-col items-center justify-center py-12 md:py-24 relative overflow-hidden font-primary px-4" style={{ background: 'var(--site-bg)' }}>
         {/* Large background text */}
-        <span className="absolute left-0 top-0 w-full text-[7vw] font-extrabold text-[#003cff]/40 select-none pointer-events-none text-center" style={{ zIndex: 0, userSelect: 'none', opacity: 0.4 }}>
+        <span className="absolute left-0 top-0 w-full text-[12vw] md:text-[7vw] font-extrabold text-[#003cff]/40 select-none pointer-events-none text-center" style={{ zIndex: 0, userSelect: 'none', opacity: 0.4 }}>
           Our Philosophy
         </span>
         {/* Section heading */}
-        <h2 className="text-5xl md:text-6xl italic font-extrabold text-center text-white mb-12 mt-8 relative z-10 font-secondary" style={{ fontStyle: 'italic', marginTop: '-2rem' }}>
+        <h2 className="text-3xl md:text-5xl lg:text-6xl italic font-extrabold text-center text-white mb-8 md:mb-12 mt-4 md:mt-8 relative z-10 font-secondary" style={{ fontStyle: 'italic', marginTop: '-1rem' }}>
           Our Philosophy
         </h2>
         {/* Content area */}
-        <div className="flex flex-row justify-between items-center w-full max-w-6xl gap-12 relative z-10">
+        <div className="flex flex-col md:flex-row justify-between items-center w-full max-w-6xl gap-8 md:gap-12 relative z-10">
           {/* Left: Thumbs up Man Image */}
-          <div className="flex-shrink-0" style={{ marginLeft: '-120px' }}>
-            <Image src="/thumbs up man.png" alt="Thumbs Up Man" width={600} height={600} style={{ width: 600, height: 600, objectFit: 'contain' }} />
+          <div className="flex-shrink-0 order-2 md:order-1" style={{ marginLeft: '0', marginRight: '0' }}>
+            <Image src="/thumbs up man.png" alt="Thumbs Up Man" width={400} height={400} className="md:w-[600px] md:h-[600px]" style={{ width: 400, height: 400, objectFit: 'contain' }} />
           </div>
           {/* Right: Text */}
-          <div className="flex-1 text-white">
-            <h3 className="text-5xl md:text-6xl font-bold mb-4">
+          <div className="flex-1 text-white text-center md:text-right order-1 md:order-2">
+            <h3 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4">
               Branding that<br />drives revenue.
             </h3>
-            <p className="text-lg text-[#b3c6ff] mt-4 text-right">
+            <p className="text-base md:text-lg text-[#b3c6ff] mt-4">
               -Pixevate Media
             </p>
           </div>
         </div>
       </section>
       {/* CTA + Footer Section */}
-      <section id="quote-section" className="w-full flex flex-col items-center justify-center pt-32 pb-0 relative overflow-hidden font-primary" style={{ background: 'var(--site-bg)' }}>
+      <section id="quote-section" className="w-full flex flex-col items-center justify-center pt-16 md:pt-32 pb-0 relative overflow-hidden font-primary px-4" style={{ background: 'var(--site-bg)' }}>
         {/* Enhanced spotlight gradient */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1400px] h-[1400px] bg-[radial-gradient(circle_at_center,_rgba(0,60,255,0.08)_0%,_rgba(0,3,31,0.02)_60%)] pointer-events-none" />
-        <div className="relative z-10 flex flex-col items-center text-center px-6">
+        <div className="relative z-10 flex flex-col items-center text-center px-2 md:px-6">
           {/* Letter-by-letter animated quote */}
-          <h2 className="text-5xl md:text-7xl font-extrabold mb-8" style={{ color: 'var(--text)' }}>
+          <h2 className="text-3xl md:text-5xl lg:text-7xl font-extrabold mb-6 md:mb-8" style={{ color: 'var(--text)' }}>
             <div className="flex flex-wrap justify-center items-center">
               {quoteText.split('').map((letter, index) => (
                 <span
@@ -722,12 +725,12 @@ export default function Home() {
               ))}
             </div>
           </h2>
-          <p className="mt-8 text-lg md:text-xl text-[#c9d6ff] max-w-4xl leading-relaxed">
+          <p className="mt-6 md:mt-8 text-base md:text-lg lg:text-xl text-[#c9d6ff] max-w-4xl leading-relaxed">
             Let&apos;s turn your pixels into powerful brands. <a className="text-[#c9d6ff] hover:text-[#3388ff] transition-colors" href="#">Book your free discovery call</a> and
             take the first step to build something extraordinary.
           </p>
           <button 
-            className="mt-12 mb-16 px-12 py-4 bg-gradient-to-r from-[#1740ff] to-[#003cff] text-white text-lg font-bold shadow-[0_8px_32px_rgba(0,60,255,0.35)] hover:shadow-[0_12px_48px_rgba(0,60,255,0.5)] transition-all duration-300 transform hover:scale-105" 
+            className="mt-8 md:mt-12 mb-8 md:mb-16 px-8 md:px-12 py-3 md:py-4 bg-gradient-to-r from-[#1740ff] to-[#003cff] text-white text-base md:text-lg font-bold shadow-[0_8px_32px_rgba(0,60,255,0.35)] hover:shadow-[0_12px_48px_rgba(0,60,255,0.5)] transition-all duration-300 transform hover:scale-105" 
             style={{ borderRadius: 0 }}
             onClick={() => setIsModalOpen(true)}
           >
@@ -738,10 +741,10 @@ export default function Home() {
         {/* Modern footer with enhanced styling */}
         <div className="w-full relative">
           {/* Gradient divider */}
-          <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-[#1740ff] to-transparent my-20" />
+          <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-[#1740ff] to-transparent my-12 md:my-20" />
           
           {/* Footer content with modern layout */}
-          <div className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-start pb-24">
+          <div className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 items-start pb-16 md:pb-24">
             {/* Left: Logo with enhanced styling */}
             <div className="flex items-start">
               <div className="relative">
