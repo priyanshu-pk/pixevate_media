@@ -157,14 +157,14 @@ export default function Home() {
       const progress = step / steps;
       
       setCounts({
-        projects: Math.floor(200 * progress),
-        clients: Math.floor(40 * progress),
-        experience: Math.floor(5 * progress)
+        projects: Math.floor(100 * progress),
+        clients: Math.floor(50 * progress),
+        experience: Math.floor(3 * progress)
       });
 
       if (step >= steps) {
         clearInterval(timer);
-        setCounts({ projects: 200, clients: 40, experience: 5 });
+        setCounts({ projects: 100, clients: 50, experience: 3 });
         
         // Repeat animation after 5 seconds
         setTimeout(() => {
@@ -189,7 +189,7 @@ export default function Home() {
       <nav className="w-full flex items-center justify-between px-12 pt-8 relative font-primary" style={{ background: 'var(--site-bg)' }}>
         {/* Logo on the left */}
         <div className="flex items-center">
-          <Image src="/logo.png.png" alt="Logo" width={56} height={56} style={{ width: 56, height: 56 }} />
+          <Image src="/logo.png.png" alt="Logo" width={64} height={64} style={{ width: 64, height: 64 }} />
         </div>
         
         {/* Center navigation (absolutely centered) */}
@@ -247,29 +247,29 @@ export default function Home() {
         <div className="flex justify-between items-center w-full max-w-5xl px-8 gap-8">
           {/* Projects Completed */}
           <div className="flex-1 flex flex-col items-center p-8 bg-gradient-to-br from-[#003cff]/10 to-[#00031f]/50 border border-[#003cff]/20 shadow-[0_8px_32px_rgba(0,60,255,0.1)] transition-all duration-300 hover:shadow-[0_12px_48px_rgba(0,60,255,0.2)]" style={{ borderRadius: 0 }}>
-            <div className="text-5xl md:text-6xl font-bold text-[#003cff] mb-4 transition-all duration-500">
+            <div className="text-5xl md:text-6xl font-bold text-[#8bb6ff] mb-4 transition-all duration-500">
               {counts.projects}+
             </div>
             <div className="text-lg font-semibold text-white mb-2">Projects</div>
-            <div className="text-sm text-[#b3c6ff] text-center">Completed</div>
+            <div className="text-sm text-[#c9d6ff] text-center">Completed</div>
           </div>
           
           {/* Happy Clients */}
           <div className="flex-1 flex flex-col items-center p-8 bg-gradient-to-br from-[#003cff]/10 to-[#00031f]/50 border border-[#003cff]/20 shadow-[0_8px_32px_rgba(0,60,255,0.1)] transition-all duration-300 hover:shadow-[0_12px_48px_rgba(0,60,255,0.2)]" style={{ borderRadius: 0 }}>
-            <div className="text-5xl md:text-6xl font-bold text-[#003cff] mb-4 transition-all duration-500">
+            <div className="text-5xl md:text-6xl font-bold text-[#8bb6ff] mb-4 transition-all duration-500">
               {counts.clients}+
             </div>
             <div className="text-lg font-semibold text-white mb-2">Happy</div>
-            <div className="text-sm text-[#b3c6ff] text-center">Clients</div>
+            <div className="text-sm text-[#c9d6ff] text-center">Clients</div>
           </div>
           
           {/* Experience */}
           <div className="flex-1 flex flex-col items-center p-8 bg-gradient-to-br from-[#003cff]/10 to-[#00031f]/50 border border-[#003cff]/20 shadow-[0_8px_32px_rgba(0,60,255,0.1)] transition-all duration-300 hover:shadow-[0_12px_48px_rgba(0,60,255,0.2)]" style={{ borderRadius: 0 }}>
-            <div className="text-5xl md:text-6xl font-bold text-[#003cff] mb-4 transition-all duration-500">
+            <div className="text-5xl md:text-6xl font-bold text-[#8bb6ff] mb-4 transition-all duration-500">
               {counts.experience}
             </div>
             <div className="text-lg font-semibold text-white mb-2">Years</div>
-            <div className="text-sm text-[#b3c6ff] text-center">Experience</div>
+            <div className="text-sm text-[#c9d6ff] text-center">Experience</div>
           </div>
         </div>
       </section>
@@ -577,10 +577,10 @@ export default function Home() {
             <h3 className="text-4xl md:text-5xl font-bold mb-6">
               Branding that makes <span className="font-secondary italic">investors listen</span> and <span className="font-secondary italic">customers stay</span>.
             </h3>
-            <p className="text-lg mb-4 text-[#b3c6ff]">
+            <p className="text-lg mb-4 text-[#c9d6ff]">
               Pixevate.Media is an AI-powered branding agency that helps visionary businesses craft smart strategies, iconic designs, and scroll-stopping campaigns.
             </p>
-            <p className="text-lg text-[#b3c6ff]">
+            <p className="text-lg text-[#c9d6ff]">
               From brand identity systems to performance-driven visuals, we create brands that don't just look good—they grow stronger.
             </p>
           </div>
@@ -751,7 +751,7 @@ export default function Home() {
             {/* Left: Logo with enhanced styling */}
             <div className="flex items-start">
               <div className="relative">
-                <Image src="/logo.png.png" alt="Logo" width={200} height={200} style={{ width: 200, height: 200 }} />
+                <Image src="/logo.png.png" alt="Logo" width={220} height={220} style={{ width: 220, height: 220 }} />
                 <div className="absolute inset-0 bg-gradient-to-br from-[#003cff]/20 to-transparent rounded-lg" />
               </div>
             </div>
@@ -783,9 +783,9 @@ export default function Home() {
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
                           <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                         </svg>
-                      </div>
+                </div>
                       <div className="text-[#c9d6ff] text-sm hover:text-[#3388ff] transition-colors cursor-pointer">pixevatemedia@gmail.com</div>
-                    </div>
+              </div>
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 bg-[#25D366] flex items-center justify-center rounded">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
